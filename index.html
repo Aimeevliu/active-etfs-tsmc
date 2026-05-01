@@ -90,6 +90,12 @@
   th.sortable.sort-desc::after { content: " ▼"; opacity: 1; }
   th.sortable:hover { background: #001fcc; }
   tr:hover td { background: rgba(215,174,232,0.18); }
+  tr.benchmark td {
+    background: rgba(0,42,255,0.06);
+    border-bottom: 2px solid var(--bi-blue);
+    font-weight: 500;
+  }
+  tr.benchmark .ticker { font-weight: 700; }
   .num { text-align: right; font-variant-numeric: tabular-nums; }
   .idx { color: var(--muted); font-size: 0.92rem; }
   .ticker {
@@ -168,6 +174,18 @@
       </tr>
     </thead>
     <tbody id="tbody">
+      
+        <tr class="benchmark">
+            <td class="num idx">—</td>
+            <td class="ticker">2330</td>
+            <td>台灣積體電路製造（基準）</td>
+            <td class="num">—</td>
+            <td class="num">—</td>
+            <td class="trend">—</td>
+            <td class="num corr"><span class="ret-down">-2.06%</span></td>
+            <td class="num corr">—</td>
+            <td class="num small">—</td>
+        </tr>
       
         <tr data-cat="台股">
             <td class="num idx">1</td>
@@ -349,7 +367,7 @@
     <p>當日漲跌以 yfinance ETF 收盤計算最近一個交易日 vs 前一交易日的單日報酬；
        「扣台積電後漲跌」為 (r_etf - w · r_2330) / (1 - w)，呈現「假設沒有台積電」這檔 ETF 的當日表現。</p>
     <p>排程：launchd 週一至週五 16:35（TPE）自動跑 daily_run.py 後重生。點擊欄位標題可排序。</p>
-    <p class="meta">資料更新：2026-05-01 23:06 · 資料來源：各投信網站｜Business Insider Taiwan</p>
+    <p class="meta">資料更新：2026-05-01 23:10 · 資料來源：各投信網站｜Business Insider Taiwan</p>
   </footer>
 </div>
 <script>
@@ -366,14 +384,18 @@
     ths.forEach(x => x.classList.remove('sort-asc','sort-desc'));
     th.classList.add(next === 'asc' ? 'sort-asc' : 'sort-desc');
     const rows = Array.from(tbody.querySelectorAll('tr'));
-    rows.sort((a, b) => {
+    // 排序時保留 benchmark 列在最前面
+    const benchmark = rows.find(r => r.classList.contains('benchmark'));
+    const sortable = rows.filter(r => !r.classList.contains('benchmark'));
+    sortable.sort((a, b) => {
       const av = parseFloat(a.children[col].dataset.sort);
       const bv = parseFloat(b.children[col].dataset.sort);
       const aN = isNaN(av) ? -Infinity : av;
       const bN = isNaN(bv) ? -Infinity : bv;
       return next === 'asc' ? aN - bN : bN - aN;
     });
-    rows.forEach((tr, i) => {
+    if (benchmark) tbody.appendChild(benchmark);
+    sortable.forEach((tr, i) => {
       tr.children[0].textContent = i + 1;
       tbody.appendChild(tr);
     });
