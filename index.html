@@ -17,6 +17,7 @@
     --line: #d7aee866;  /* 粉紫低透明，當分隔線 */
   }
   *,*::before,*::after { box-sizing: border-box; }
+  html { font-size: 18px; }
   body {
     font-family: -apple-system, BlinkMacSystemFont, "PingFang TC", "Heiti TC",
                  "Microsoft JhengHei", sans-serif;
@@ -32,11 +33,11 @@
     padding-bottom: 1rem;
   }
   h1 {
-    font-size: 1.7rem; font-weight: 700; margin: 0 0 0.4rem;
+    font-size: 1.9rem; font-weight: 700; margin: 0 0 0.5rem;
     letter-spacing: 0.02em; color: var(--bi-blue);
   }
-  .subtitle { color: var(--ink); font-size: 0.95rem; }
-  .meta { color: var(--muted); font-size: 0.82rem; margin-top: 0.4rem; }
+  .subtitle { color: var(--ink); font-size: 1.05rem; }
+  .meta { color: var(--muted); font-size: 0.88rem; margin-top: 0.4rem; }
 
   .stats {
     display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
@@ -47,10 +48,10 @@
     padding: 0.75rem 1rem; border-radius: 6px;
     background: rgba(215,174,232,0.12);
   }
-  .stat-card .label { font-size: 0.78rem; color: var(--muted); }
+  .stat-card .label { font-size: 0.85rem; color: var(--muted); }
   .stat-card .value {
-    font-size: 1.5rem; font-weight: 700;
-    color: var(--deep-purple); margin-top: 0.2rem;
+    font-size: 1.7rem; font-weight: 700;
+    color: var(--deep-purple); margin-top: 0.25rem;
   }
 
   .tabs { display: flex; gap: 0.4rem; margin: 1rem 0; }
@@ -69,34 +70,34 @@
   }
 
   table {
-    width: 100%; border-collapse: collapse; font-size: 0.92rem;
+    width: 100%; border-collapse: collapse; font-size: 1rem;
     background: rgba(255,255,255,0.6); border-radius: 6px; overflow: hidden;
   }
   th, td {
-    padding: 0.7rem 0.75rem; text-align: left;
+    padding: 0.75rem 0.8rem; text-align: left;
     border-bottom: 1px solid var(--line);
   }
   th {
     background: var(--bi-blue); color: #fff;
-    font-weight: 600; font-size: 0.85rem;
+    font-weight: 600; font-size: 0.95rem;
     border-bottom: none; letter-spacing: 0.02em;
   }
   th.sortable { cursor: pointer; user-select: none; position: relative; }
   th.sortable::after {
-    content: " ⇅"; opacity: 0.5; font-size: 0.78rem;
+    content: " ⇅"; opacity: 0.5; font-size: 0.85rem;
   }
   th.sortable.sort-asc::after { content: " ▲"; opacity: 1; }
   th.sortable.sort-desc::after { content: " ▼"; opacity: 1; }
   th.sortable:hover { background: #001fcc; }
   tr:hover td { background: rgba(215,174,232,0.18); }
   .num { text-align: right; font-variant-numeric: tabular-nums; }
-  .idx { color: var(--muted); font-size: 0.85rem; }
+  .idx { color: var(--muted); font-size: 0.92rem; }
   .ticker {
     font-family: ui-monospace, SFMono-Regular, monospace;
-    font-weight: 600; color: var(--bi-blue); font-size: 0.92rem;
+    font-weight: 600; color: var(--bi-blue); font-size: 1rem;
   }
-  .issuer { color: var(--muted); font-size: 0.88rem; }
-  .small { font-size: 0.82rem; color: var(--muted); }
+  .issuer { color: var(--muted); font-size: 0.95rem; }
+  .small { font-size: 0.9rem; color: var(--muted); }
 
   .weight-high { color: var(--bi-blue); font-weight: 700; }
   .weight-mid { color: var(--deep-purple); font-weight: 600; }
@@ -107,7 +108,7 @@
   .trend-up { color: var(--bi-blue); font-weight: 500; }
   .trend-down { color: var(--deep-purple); font-weight: 500; }
   .trend-flat { color: var(--muted); }
-  .trend-meta { color: #b3b3b3; font-size: 0.78rem; margin-left: 0.4rem; }
+  .trend-meta { color: #b3b3b3; font-size: 0.85rem; margin-left: 0.4rem; }
   .corr { font-variant-numeric: tabular-nums; }
   .corr-high { color: var(--bi-blue); font-weight: 600; }
   .corr-mid { color: var(--deep-purple); font-weight: 500; }
@@ -119,10 +120,10 @@
   footer {
     margin-top: 1.5rem; padding-top: 1rem;
     border-top: 1px solid var(--pink-purple);
-    color: var(--muted); font-size: 0.82rem; line-height: 1.7;
+    color: var(--muted); font-size: 0.92rem; line-height: 1.7;
   }
-  footer p { margin: 0.2rem 0; }
-  .legend { color: var(--muted); font-size: 0.82rem; }
+  footer p { margin: 0.3rem 0; }
+  .legend { color: var(--muted); font-size: 0.92rem; }
   .legend span { margin-right: 0.8rem; }
   .legend .swatch {
     display: inline-block; width: 0.7rem; height: 0.7rem; border-radius: 2px;
@@ -130,9 +131,10 @@
   }
 
   @media (max-width: 720px) {
+    html { font-size: 16px; }
     body { padding: 1rem 0.5rem; }
-    th, td { padding: 0.5rem 0.4rem; font-size: 0.85rem; }
-    .issuer, .small { display: none; }
+    th, td { padding: 0.55rem 0.45rem; font-size: 0.92rem; }
+    .small { display: none; }
     .stats { grid-template-columns: repeat(2, 1fr); }
   }
 </style>
@@ -347,7 +349,7 @@
     <p>當日漲跌以 yfinance ETF 收盤計算最近一個交易日 vs 前一交易日的單日報酬；
        「扣台積電後漲跌」為 (r_etf - w · r_2330) / (1 - w)，呈現「假設沒有台積電」這檔 ETF 的當日表現。</p>
     <p>排程：launchd 週一至週五 16:35（TPE）自動跑 daily_run.py 後重生。點擊欄位標題可排序。</p>
-    <p class="meta">資料更新：2026-05-01 22:50 · 資料來源：各投信網站｜Business Insider Taiwan</p>
+    <p class="meta">資料更新：2026-05-01 23:06 · 資料來源：各投信網站｜Business Insider Taiwan</p>
   </footer>
 </div>
 <script>
