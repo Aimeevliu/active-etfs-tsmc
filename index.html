@@ -39,6 +39,18 @@
   .subtitle { color: var(--ink); font-size: 1.05rem; }
   .meta { color: var(--muted); font-size: 0.88rem; margin-top: 0.4rem; }
 
+  .context {
+    margin: 1.2rem 0;
+    padding: 0.9rem 1.1rem;
+    background: rgba(215,174,232,0.18);
+    border-left: 4px solid var(--bi-blue);
+    border-radius: 4px;
+    font-size: 0.95rem; line-height: 1.7;
+    color: var(--ink);
+  }
+  .context strong { color: var(--bi-blue); display: block; margin-bottom: 0.3rem; font-size: 1rem; }
+  .context .hl { color: var(--deep-purple); font-weight: 700; }
+
   .stats {
     display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
     gap: 1rem; margin: 1.2rem 0;
@@ -165,6 +177,13 @@
     <h1>主動式 ETF × 台積電（2330）持股比例</h1>
     <div class="subtitle">每日追蹤 15 檔主動 ETF 的台積電配置權重與股數變化</div>
   </header>
+
+  <section class="context">
+    <strong>為什麼這份資料重要？</strong>
+    金管會 2026/04/24 宣布鬆綁台股基金與主動式 ETF 對單一公司持股上限，由 <span class="hl">10%</span> 放寬至 <span class="hl">25%</span>，市場戲稱「台積電條款」（亦有「瑤神條款」之稱）。
+    台積電占大盤市值約 44%，過去 10% 上限讓績效難跟「拉積盤」同步；新制上路後，主動 ETF 經理人可加碼空間放大，潛在增持 2,000 億元。
+    本表追蹤每日各檔 ETF 的台積電持股比重變化，看誰真的踩到 25% 上限、誰選擇分散。
+  </section>
 
   <section class="stats">
     <div class="stat-card"><div class="label">主動 ETF 檔數</div><div class="value">15</div></div>
@@ -369,7 +388,7 @@
     <p>當日漲跌以 yfinance ETF 收盤計算最近一個交易日 vs 前一交易日的單日報酬；
        「扣台積電後漲跌」為 (r_etf - w · r_2330) / (1 - w)，呈現「假設沒有台積電」這檔 ETF 的當日表現。</p>
     <p>排程：launchd 週一至週五 16:35（TPE）自動跑 daily_run.py 後重生。點擊欄位標題可排序。</p>
-    <p class="meta">資料更新：2026-05-01 23:15 · 資料來源：各投信網站｜Business Insider Taiwan</p>
+    <p class="meta">資料更新：2026-05-01 23:16 · 資料來源：各投信網站｜Business Insider Taiwan</p>
   </footer>
 </div>
 <script>
